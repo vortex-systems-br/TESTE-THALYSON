@@ -3,198 +3,202 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thalyson Rodrigues | Engenharia de Imagem</title>
+    <title>Studio Thalyson Rodrigues | Barbearia de Elite</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Inter:wght@200;400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
     <style>
+        /* === VARIÁVEIS DE SISTEMA (ENGINE) === */
         :root {
-            --gold: #c5a059;
-            --gold-bright: #f3e5ab;
-            --black: #050505;
-            --surface: #0d0d0d;
-            --text: #ffffff;
-            --muted: #666;
-            --transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            --bg-dark: #050505;
+            --bg-surface: #111111;
+            --gold-accent: #c9a96e;
+            --gold-hover: #e0be82;
+            --text-main: #f5f5f5;
+            --text-muted: #888888;
+            --glass-bg: rgba(255, 255, 255, 0.02);
+            --glass-border: rgba(255, 255, 255, 0.05);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        /* === RESET E PERFORMANCE === */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { background-color: var(--bg-dark); color: var(--text-main); font-family: 'Inter', sans-serif; overflow-x: hidden; }
         
-        /* Fim do Azul */
-        ::selection { background: var(--gold); color: #000; }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-dark); }
+        ::-webkit-scrollbar-thumb { background: var(--gold-accent); border-radius: 10px; }
+
+        /* === COMPONENTES GLOBAIS === */
+        h1, h2, h3 { font-family: 'Cinzel', serif; font-weight: 600; letter-spacing: 2px; }
         
-        body { 
-            background: var(--black); 
-            color: var(--text); 
-            font-family: 'Inter', sans-serif; 
-            overflow-x: hidden;
-            line-height: 1.5;
-        }
-
-        /* HEADER MINIMALISTA */
-        header {
-            position: fixed; width: 100%; top: 0; z-index: 1000;
-            padding: 30px 5%; display: flex; justify-content: space-between; align-items: center;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent);
-        }
-        .brand { font-family: 'Cinzel'; font-weight: 900; color: var(--gold); letter-spacing: 5px; font-size: 1.2rem; }
-
-        /* HERO - O IMPACTO QUE FALTAVA */
-        .hero {
-            height: 100vh;
-            display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
-            align-items: center;
-            padding: 0 5%;
+        .btn-vortex {
+            display: inline-block;
             position: relative;
-            background: radial-gradient(circle at 70% 50%, #1a1a1a 0%, #050505 100%);
-        }
-
-        .hero-text { z-index: 2; position: relative; }
-        .hero-text span { color: var(--gold); text-transform: uppercase; letter-spacing: 8px; font-size: 0.8rem; font-weight: 700; margin-bottom: 20px; display: block; }
-        .hero-text h1 { font-family: 'Cinzel'; font-size: clamp(3rem, 10vw, 6rem); line-height: 0.9; margin-bottom: 30px; }
-        .hero-text h1 em { color: var(--gold); font-style: normal; }
-
-        .hero-visual {
-            height: 80vh;
-            background: url('image_31c5f4.jpg') center/cover no-repeat;
-            border: 1px solid rgba(197, 160, 89, 0.2);
-            position: relative;
-            box-shadow: -50px 0 100px rgba(0,0,0,0.9);
-        }
-        
-        /* Botão Luxo */
-        .cta {
-            padding: 20px 50px;
-            background: var(--gold);
-            color: #000;
-            text-decoration: none;
-            font-weight: 900;
+            padding: 18px 45px;
+            background: transparent;
+            border: 1px solid var(--gold-accent);
+            color: var(--gold-accent);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 3px;
-            font-size: 0.8rem;
-            display: inline-block;
-            transition: var(--transition);
-        }
-        .cta:hover { background: var(--gold-bright); transform: scale(1.05); box-shadow: 0 0 50px rgba(197, 160, 89, 0.4); }
-
-        /* SERVIÇOS PRO */
-        .services { padding: 100px 5%; }
-        .section-title { font-family: 'Cinzel'; font-size: 2.5rem; text-align: center; margin-bottom: 80px; }
-        .section-title span { color: var(--gold); display: block; font-size: 0.9rem; letter-spacing: 5px; margin-bottom: 10px; }
-
-        .grid-pro {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
+            text-decoration: none;
+            overflow: hidden;
+            transition: 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+            z-index: 1;
         }
 
-        .item-pro {
-            background: var(--surface);
-            padding: 40px;
-            border-bottom: 2px solid var(--gold);
-            transition: var(--transition);
+        .btn-vortex::before {
+            content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+            background: var(--gold-accent); transition: 0.5s cubic-bezier(0.19, 1, 0.22, 1); z-index: -1;
         }
-        .item-pro:hover { background: #151515; transform: translateY(-10px); }
-        .item-pro h3 { font-family: 'Cinzel'; margin-bottom: 15px; color: var(--gold); }
-        .item-pro p { color: var(--muted); font-size: 0.9rem; margin-bottom: 25px; }
-        .item-pro .price { font-size: 1.8rem; font-weight: 200; font-family: 'Cinzel'; }
 
-        /* GALERIA REAL */
-        .gallery { padding: 100px 5%; background: var(--surface); }
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-        }
-        .gallery-img { 
-            width: 100%; height: 400px; object-fit: cover; 
-            filter: grayscale(100%); transition: var(--transition);
-            border: 1px solid var(--border);
-        }
-        .gallery-img:hover { filter: grayscale(0%); transform: scale(0.98); }
+        .btn-vortex:hover::before { left: 0; }
+        .btn-vortex:hover { color: var(--bg-dark); box-shadow: 0 0 20px rgba(201,169,110,0.4); }
 
-        /* WHATSAPP */
-        .wpp-vortex {
-            position: fixed; bottom: 40px; right: 40px;
-            width: 70px; height: 70px; background: #25d366;
-            border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            color: white; font-size: 35px; text-decoration: none; z-index: 1000;
+        /* === NAVBAR DINÂMICA === */
+        header {
+            position: fixed; top: 0; width: 100%; padding: 25px 5%;
+            display: flex; justify-content: space-between; align-items: center;
+            z-index: 100; transition: 0.4s;
+        }
+        header.scrolled {
+            padding: 15px 5%; background: rgba(5, 5, 5, 0.85);
+            backdrop-filter: blur(15px); border-bottom: 1px solid var(--glass-border);
+        }
+        .logo { font-family: 'Cinzel', serif; font-size: 1.5rem; color: var(--gold-accent); }
+
+        /* === HERO SECTION (O IMPACTO) === */
+        .hero {
+            height: 100vh;
+            display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;
+            background: linear-gradient(to bottom, rgba(5,5,5,0.4) 0%, rgba(5,5,5,0.9) 100%), 
+                        url('https://images.unsplash.com/photo-1585747860715-2ba37e788b70?q=80&w=1920&auto=format&fit=crop') center/cover no-repeat;
+            position: relative;
+        }
+        .hero-subtitle { text-transform: uppercase; letter-spacing: 6px; font-size: 0.8rem; color: var(--gold-accent); margin-bottom: 20px; }
+        .hero h1 { font-size: clamp(3rem, 8vw, 6rem); margin-bottom: 30px; text-shadow: 2px 2px 10px rgba(0,0,0,0.8); }
+
+        /* === SEÇÃO DE SERVIÇOS (GLASSMORPHISM) === */
+        .services { padding: 100px 5%; max-width: 1300px; margin: auto; }
+        .section-header { text-align: center; margin-bottom: 60px; }
+        .section-header h2 { font-size: 2.5rem; color: var(--gold-accent); }
+        .section-header p { color: var(--text-muted); margin-top: 10px; font-weight: 300; }
+
+        .service-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px;
+        }
+
+        .service-card {
+            background: var(--glass-bg); backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border); border-radius: 4px;
+            overflow: hidden; transition: 0.5s ease;
+            position: relative;
+        }
+        .service-card:hover {
+            transform: translateY(-10px); border-color: var(--gold-accent);
             box-shadow: 0 15px 30px rgba(0,0,0,0.5);
         }
+        .service-img { width: 100%; height: 280px; object-fit: cover; filter: grayscale(40%) contrast(120%); transition: 0.5s; }
+        .service-card:hover .service-img { filter: grayscale(0%) contrast(110%); }
+        
+        .service-info { padding: 30px; }
+        .service-info h3 { font-size: 1.3rem; margin-bottom: 10px; }
+        .service-info p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 20px; }
+        .service-price { display: block; font-size: 1.2rem; font-weight: 600; color: var(--gold-accent); }
 
-        @media (max-width: 900px) {
-            .hero { grid-template-columns: 1fr; text-align: center; }
-            .hero-visual { display: none; }
-            .hero-text h1 { font-size: 4rem; }
-            .gallery-grid { grid-template-columns: 1fr; }
+        /* === FOOTER VORTEX === */
+        footer {
+            text-align: center; padding: 50px 20px; background: #000;
+            border-top: 1px solid var(--glass-border);
         }
+        .vortex-signature { font-size: 0.7rem; letter-spacing: 4px; color: #444; margin-top: 20px; text-transform: uppercase; }
+        .vortex-signature span { color: var(--gold-accent); font-weight: bold; }
+
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="brand">THALYSON.R</div>
-        <div style="color: var(--muted); font-size: 0.7rem; letter-spacing: 3px;">ARAÇATUBA / SP</div>
+    <header id="navbar">
+        <div class="logo">TR Studio</div>
+        <a href="#agendar" class="btn-vortex" style="padding: 10px 25px; font-size: 0.7rem;">Reservar Horário</a>
     </header>
 
     <section class="hero">
-        <div class="hero-text">
-            <span>The Barber Specialist</span>
-            <h1>ESTILO É <br><em>PODER.</em></h1>
-            <p style="color: var(--muted); margin-bottom: 40px; max-width: 500px;">
-                Especialista em visagismo e engenharia de imagem masculina. Transforme sua presença no Studio Thalyson Rodrigues.
-            </p>
-            <a href="https://wa.me/5518991320437" class="cta">Agendar Agora</a>
-        </div>
-        <div class="hero-visual"></div>
-    </section>
-
-    <section class="services">
-        <div class="section-title">
-            <span>Protocolos</span>
-            MENU DE SERVIÇOS
-        </div>
-        
-        <div class="grid-pro">
-            <div class="item-pro">
-                <h3>CORTE VISAGISTA</h3>
-                <p>Análise completa de traços faciais para um corte que valoriza seu rosto.</p>
-                <div class="price">R$ 60,00</div>
-            </div>
-            <div class="item-pro">
-                <h3>BARBOTERAPIA</h3>
-                <p>Processo com toalha quente, óleos essenciais e acabamento na navalha.</p>
-                <div class="price">R$ 45,00</div>
-            </div>
-            <div class="item-pro">
-                <h3>COMBO MASTER</h3>
-                <p>Cabelo, barba e sobrancelha com finalização premium.</p>
-                <div class="price">R$ 100,00</div>
-            </div>
+        <div data-aos="fade-down" data-aos-duration="1000">
+            <p class="hero-subtitle">Bem-vindo ao nível elite</p>
+            <h1>Studio Thalyson<br>Rodrigues</h1>
+            <a href="#servicos" class="btn-vortex">Acessar Protocolos</a>
         </div>
     </section>
 
-    <section class="gallery">
-        <div class="section-title">
-            <span>Resultados</span>
-            GALERIA REAIS
+    <section id="servicos" class="services">
+        <div class="section-header" data-aos="fade-up">
+            <h2>Nossos Protocolos</h2>
+            <p>Não é apenas um corte. É engenharia de imagem.</p>
         </div>
-        <div class="gallery-grid">
-            <img src="image_32176f.png" class="gallery-img" alt="Resultado">
-            <img src="image_321773.png" class="gallery-img" alt="Resultado">
+
+        <div class="service-grid">
+            <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                <img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?q=80&w=800&auto=format&fit=crop" class="service-img" alt="Corte Visagista">
+                <div class="service-info">
+                    <h3>Corte Visagista Premium</h3>
+                    <p>Análise facial completa e corte executado com precisão milimétrica para valorizar sua estrutura.</p>
+                    <span class="service-price">A partir de R$ 60,00</span>
+                </div>
+            </div>
+
+            <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?q=80&w=800&auto=format&fit=crop" class="service-img" alt="Barboterapia">
+                <div class="service-info">
+                    <h3>Terapia de Toalha Quente</h3>
+                    <p>Relaxamento profundo, ozonioterapia e alinhamento perfeito dos fios da barba com navalha.</p>
+                    <span class="service-price">A partir de R$ 45,00</span>
+                </div>
+            </div>
+
+            <div class="service-card" data-aos="fade-up" data-aos-delay="500">
+                <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?q=80&w=800&auto=format&fit=crop" class="service-img" alt="Pigmentação">
+                <div class="service-info">
+                    <h3>Pigmentação e Alinhamento</h3>
+                    <p>Correção de falhas e realce do contorno com produtos de alta fixação e acabamento natural.</p>
+                    <span class="service-price">A partir de R$ 35,00</span>
+                </div>
+            </div>
         </div>
     </section>
 
-    <footer style="padding: 100px 5%; text-align: center; border-top: 1px solid #1a1a1a;">
-        <div class="brand" style="margin-bottom: 20px;">TR STUDIO</div>
-        <p style="color: var(--muted); font-size: 0.8rem;">© 2026 — Desenvolvido por Sistemas Vortex</p>
+    <footer>
+        <h2 style="color: var(--gold-accent); margin-bottom: 10px; font-size: 1.5rem;">Studio Thalyson Rodrigues</h2>
+        <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 30px;">Araçatuba - SP</p>
+        <div class="vortex-signature">
+            Powered by <span>Sistemas Vortex BR</span>
+        </div>
     </footer>
 
-    <a href="https://wa.me/5518991320437" class="wpp-vortex">
-        <i class="fab fa-whatsapp"></i>
-    </a>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Inicializa a Engine de Animação
+        AOS.init({
+            once: true, // A animação ocorre apenas uma vez
+            offset: 100, // Dispara a animação 100px antes do elemento aparecer
+            easing: 'ease-out-cubic'
+        });
 
+        // Lógica do Navbar Dinâmico
+        window.addEventListener('scroll', function() {
+            var navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+    </script>
 </body>
 </html>
