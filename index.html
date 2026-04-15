@@ -3,259 +3,218 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Studio Thalyson | Barbearia Premium em Araçatuba</title>
+    <title>Studio Thalyson Rodrigues | Barbearia de Elite Araçatuba</title>
     
-    <meta name="description" content="Corte premium em Araçatuba. Visagismo, barba e acabamento de alto nível. Agende agora pelo WhatsApp.">
-
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
         :root {
-            --bg: #050505;
-            --card: #0c0c0c;
+            --bg: #030303;
+            --surface: #0a0a0a;
+            --card: #111111;
             --gold: #d4af37;
-            --gold-hover: #f3e5ab;
+            --gold-light: #f3e5ab;
             --text: #ffffff;
             --muted: #888;
-            --border: rgba(212, 175, 55, 0.15);
-            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            --border: rgba(212, 175, 55, 0.1);
         }
 
-        /* Bloqueio de cores indesejadas (Elimina o azul) */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            -webkit-tap-highlight-color: transparent; /* Remove azul ao tocar no mobile */
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        ::selection { background: var(--gold); color: var(--bg); }
+        
+        body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; line-height: 1.6; overflow-x: hidden; }
+        h1, h2, h3 { font-family: 'Cinzel', serif; text-transform: uppercase; letter-spacing: 2px; }
 
-        ::selection {
-            background: var(--gold);
-            color: var(--bg);
-        }
+        /* HEADER */
+        header { padding: 25px 5%; display: flex; justify-content: space-between; align-items: center; position: absolute; width: 100%; z-index: 10; }
+        .logo { color: var(--gold); font-weight: 900; font-size: 1.5rem; letter-spacing: 4px; }
 
-        body {
-            background-color: var(--bg);
-            color: var(--text);
-            font-family: 'Inter', sans-serif;
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        /* Estilização da Scrollbar */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: var(--bg); }
-        ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 10px; }
-
-        section {
-            padding: 80px 20px;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        h1, h2, h3 {
-            font-family: 'Cinzel', serif;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--gold);
-        }
-
-        /* HERO SECTION - Blindada */
+        /* HERO */
         .hero {
-            height: 90vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
-                        url('https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&q=80&w=1920');
-            background-size: cover;
-            background-position: center;
-            border-bottom: 1px solid var(--border);
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1512690196252-73bc69f39908?auto=format&fit=crop&q=80&w=1920');
+            background-size: cover; background-position: center;
+            display: flex; align-items: center; justify-content: center; text-align: center;
         }
+        .hero-content h1 { font-size: clamp(2.5rem, 8vw, 5rem); color: #fff; margin-bottom: 20px; }
+        .hero-content p { color: var(--gold); letter-spacing: 5px; margin-bottom: 35px; text-transform: uppercase; font-size: 0.9rem; }
 
-        .hero-content { max-width: 700px; }
-
-        .hero h1 {
-            font-size: clamp(2.5rem, 8vw, 4.5rem);
-            margin-bottom: 15px;
-            color: #fff;
-            line-height: 1.1;
-        }
-
-        .hero p {
-            font-size: 1.1rem;
-            color: var(--muted);
-            margin-bottom: 30px;
-            letter-spacing: 1px;
-        }
-
-        /* BOTÃO VORTEX PRO */
         .btn {
-            display: inline-block;
-            padding: 18px 45px;
-            background: transparent;
-            color: var(--gold);
-            border: 1px solid var(--gold);
-            text-decoration: none;
-            font-weight: 600;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            font-size: 0.85rem;
-            transition: var(--transition);
-            position: relative;
-            z-index: 1;
+            padding: 18px 45px; border: 1px solid var(--gold); color: var(--gold);
+            text-decoration: none; text-transform: uppercase; font-weight: 600; letter-spacing: 2px;
+            transition: 0.4s; position: relative; overflow: hidden; display: inline-block;
         }
+        .btn:hover { background: var(--gold); color: var(--bg); box-shadow: 0 0 40px rgba(212, 175, 55, 0.3); }
 
-        .btn:hover {
-            color: var(--bg);
-            background: var(--gold);
-            box-shadow: 0 0 30px rgba(212, 175, 55, 0.4);
-            transform: translateY(-3px);
-        }
+        /* SERVIÇOS EXPANDIDOS */
+        section { padding: 100px 5%; max-width: 1200px; margin: 0 auto; }
+        .section-header { text-align: center; margin-bottom: 60px; }
+        .section-header h2 { font-size: 2.5rem; color: var(--gold); }
+        .section-header p { color: var(--muted); margin-top: 10px; }
 
-        /* GRID DE SERVIÇOS */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            margin-top: 40px;
-        }
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 20px; }
+        .s-card { background: var(--card); border: 1px solid var(--border); transition: 0.4s; position: relative; overflow: hidden; }
+        .s-card:hover { border-color: var(--gold); transform: translateY(-5px); }
+        
+        .s-img { width: 100%; height: 220px; object-fit: cover; filter: grayscale(100%); transition: 0.6s; }
+        .s-card:hover .s-img { filter: grayscale(0%); }
 
-        .card {
-            background: var(--card);
-            border: 1px solid var(--border);
-            overflow: hidden;
-            transition: var(--transition);
-            position: relative;
-        }
+        .s-info { padding: 25px; display: flex; justify-content: space-between; align-items: flex-start; }
+        .s-text h3 { font-size: 1.1rem; color: #fff; margin-bottom: 5px; }
+        .s-text p { font-size: 0.85rem; color: var(--muted); }
+        .s-price { color: var(--gold); font-weight: 900; font-size: 1.4rem; font-family: 'Cinzel'; }
 
-        .card:hover {
-            border-color: var(--gold);
-            transform: translateY(-10px);
-        }
+        /* AGENDAMENTO */
+        .booking { background: var(--surface); text-align: center; border-radius: 4px; padding: 60px; margin: 40px auto; border: 1px solid var(--border); }
+        .booking h2 { margin-bottom: 20px; }
+        
+        /* FAQ */
+        .faq { margin-top: 80px; }
+        .faq-item { background: var(--card); border-bottom: 1px solid var(--border); padding: 20px; margin-bottom: 10px; }
+        .faq-item h4 { color: var(--gold); margin-bottom: 5px; font-size: 0.9rem; }
+        .faq-item p { color: var(--muted); font-size: 0.85rem; }
 
-        .card img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            filter: grayscale(100%) contrast(1.2);
-            transition: var(--transition);
-        }
+        /* FOOTER */
+        footer { padding: 60px 5%; border-top: 1px solid var(--border); text-align: center; background: #000; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 40px; text-align: left; }
+        .f-col h4 { color: var(--gold); margin-bottom: 20px; font-size: 0.8rem; letter-spacing: 2px; }
+        .f-col p { font-size: 0.85rem; color: var(--muted); margin-bottom: 10px; }
 
-        .card:hover img {
-            filter: grayscale(0%);
-            transform: scale(1.05);
-        }
-
-        .card-content {
-            padding: 25px;
-            text-align: center;
-        }
-
-        .card-content h3 { color: #fff; margin-bottom: 10px; font-size: 1.2rem; }
-        .card-content p { color: var(--muted); font-size: 0.9rem; margin-bottom: 15px; }
-
-        .price {
-            font-family: 'Cinzel', serif;
-            font-size: 1.5rem;
-            color: var(--gold);
-            font-weight: 900;
-        }
-
-        /* TESTEMUNHOS */
-        .testimonial {
-            text-align: center;
-            background: var(--card);
-            margin-top: 40px;
-            border-radius: 4px;
-        }
-
-        .stars { color: var(--gold); font-size: 1.5rem; margin-bottom: 10px; }
-
-        /* WHATSAPP FLUTUANTE */
-        .wpp-link {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: #25d366;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-            z-index: 100;
-            transition: var(--transition);
-        }
-
-        .wpp-link:hover { transform: scale(1.1); }
-
-        footer {
-            padding: 40px 20px;
-            text-align: center;
-            border-top: 1px solid var(--border);
-            color: var(--muted);
-            font-size: 0.8rem;
-            letter-spacing: 2px;
-        }
-
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2.8rem; }
-        }
+        .wpp-float { position: fixed; bottom: 30px; right: 30px; background: #25d366; width: 65px; height: 65px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; color: white; z-index: 100; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
     </style>
 </head>
 <body>
 
+    <header>
+        <div class="logo">TR STUDIO</div>
+        <a href="#agendar" class="btn" style="padding: 10px 20px; font-size: 0.7rem;">Reservar Agora</a>
+    </header>
+
     <section class="hero">
         <div class="hero-content">
-            <p style="color: var(--gold); font-weight: 600; text-transform: uppercase;">Experiência de Elite</p>
-            <h1>STUDIO THALYSON</h1>
-            <p>Engenharia de imagem e visagismo avançado para o homem moderno.</p>
-            <a href="https://wa.me/5518991320437?text=Quero%20agendar" class="btn">Agendar Experiência</a>
+            <p>Engenharia de Imagem Masculina</p>
+            <h1>O Seu Melhor Visual<br>Começa Aqui.</h1>
+            <a href="#servicos" class="btn">Conhecer Protocolos</a>
         </div>
     </section>
 
     <section id="servicos">
-        <h2 style="text-align: center; margin-bottom: 10px;">Protocolos de Luxo</h2>
-        <p style="text-align: center; color: var(--muted);">Escolha a sua transformação</p>
-        
-        <div class="grid">
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?auto=format&fit=crop&q=80&w=800" alt="Corte de Cabelo">
-                <div class="card-content">
-                    <h3>Corte Visagista</h3>
-                    <p>Análise completa de perfil e formato de rosto para um corte exclusivo.</p>
-                    <div class="price">R$ 60,00</div>
+        <div class="section-header">
+            <h2>Cardápio de Serviços</h2>
+            <p>Excelência técnica com os melhores produtos do mercado.</p>
+        </div>
+
+        <div class="services-grid">
+            <div class="s-card">
+                <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&q=80&w=600" class="s-img">
+                <div class="s-info">
+                    <div class="s-text">
+                        <h3>Corte Visagista</h3>
+                        <p>Análise de perfil e acabamento.</p>
+                    </div>
+                    <div class="s-price">R$ 60</div>
                 </div>
             </div>
-
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&q=80&w=800" alt="Barba Premium">
-                <div class="card-content">
-                    <h3>Barba Terapia</h3>
-                    <p>Toalha quente, hidratação de fios e alinhamento com navalha.</p>
-                    <div class="price">R$ 45,00</div>
+            <div class="s-card">
+                <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&q=80&w=600" class="s-img">
+                <div class="s-info">
+                    <div class="s-text">
+                        <h3>Barba Terapia</h3>
+                        <p>Toalha quente e ozonioterapia.</p>
+                    </div>
+                    <div class="s-price">R$ 45</div>
+                </div>
+            </div>
+            <div class="s-card">
+                <img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?auto=format&fit=crop&q=80&w=600" class="s-img">
+                <div class="s-info">
+                    <div class="s-text">
+                        <h3>Combo Premium</h3>
+                        <p>Cabelo + Barba + Sobrancelha.</p>
+                    </div>
+                    <div class="s-price">R$ 100</div>
+                </div>
+            </div>
+            <div class="s-card">
+                <img src="https://images.unsplash.com/photo-1512496015851-a1fbaf3dc39c?auto=format&fit=crop&q=80&w=600" class="s-img">
+                <div class="s-info">
+                    <div class="s-text">
+                        <h3>Pigmentação</h3>
+                        <p>Correção de falhas natural.</p>
+                    </div>
+                    <div class="s-price">R$ 35</div>
+                </div>
+            </div>
+            <div class="s-card">
+                <img src="https://images.unsplash.com/photo-1593702295094-ada74bc1599a?auto=format&fit=crop&q=80&w=600" class="s-img">
+                <div class="s-info">
+                    <div class="s-text">
+                        <h3>Platinado / Nevou</h3>
+                        <p>Descoloração global com proteção.</p>
+                    </div>
+                    <div class="s-price">R$ 120</div>
+                </div>
+            </div>
+            <div class="s-card">
+                <img src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?auto=format&fit=crop&q=80&w=600" class="s-img">
+                <div class="s-info">
+                    <div class="s-text">
+                        <h3>Limpeza de Pele</h3>
+                        <p>Remoção de impurezas profunda.</p>
+                    </div>
+                    <div class="s-price">R$ 50</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="testimonial">
-        <div class="stars">★★★★★</div>
-        <p style="font-style: italic; font-size: 1.2rem; margin-bottom: 10px;">"O melhor atendimento de Araçatuba. O Thalyson entende o que o cliente quer."</p>
-        <p style="color: var(--gold); font-weight: bold;">+200 Clientes Satisfeitos</p>
+    <section id="agendar" class="booking">
+        <h2>Pronto para a Transformação?</h2>
+        <p style="color: var(--muted); margin-bottom: 30px;">Clique no botão abaixo para escolher seu horário no WhatsApp.</p>
+        <a href="https://wa.me/5518991320437?text=Quero%20agendar%20um%20horario" class="btn" style="background: var(--gold); color: #000;">Agendar Agora</a>
     </section>
 
-    <a href="https://wa.me/5518991320437?text=Quero%20agendar" class="wpp-link" target="_blank">
-        <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" width="35" style="filter: invert(1);">
-    </a>
+    <section class="faq">
+        <div class="section-header">
+            <h2>Dúvidas Frequentes</h2>
+        </div>
+        <div class="faq-item">
+            <h4>Atende por ordem de chegada?</h4>
+            <p>Priorizamos o agendamento para garantir sua melhor experiência, mas consulte disponibilidade para encaixes.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Quais as formas de pagamento?</h4>
+            <p>Aceitamos Pix, Cartões de Débito e Crédito.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Onde o Studio está localizado?</h4>
+            <p>No coração de Araçatuba, com fácil acesso e estacionamento.</p>
+        </div>
+    </section>
 
     <footer>
-        <p>© 2026 STUDIO THALYSON RODRIGUES · ARAÇATUBA/SP</p>
-        <p style="margin-top: 10px; font-size: 0.6rem; color: #333;">POWERED BY SISTEMAS VORTEX</p>
+        <div class="footer-grid">
+            <div class="f-col">
+                <h4>LOCALIZAÇÃO</h4>
+                <p>Araçatuba - SP</p>
+                <p>Centro Profissional</p>
+            </div>
+            <div class="f-col">
+                <h4>HORÁRIOS</h4>
+                <p>Segunda - Sexta: 09h às 19h</p>
+                <p>Sábado: 08h às 18h</p>
+            </div>
+            <div class="f-col">
+                <h4>CONTATO</h4>
+                <p>(18) 99132-0437</p>
+                <p>@studio_thalyson</p>
+            </div>
+        </div>
+        <p style="font-size: 0.6rem; color: #222; letter-spacing: 5px; margin-top: 40px;">SISTEMAS VORTEX · 2026</p>
     </footer>
+
+    <a href="https://wa.me/5518991320437" class="wpp-float"><i class="fab fa-whatsapp"></i></a>
 
 </body>
 </html>
